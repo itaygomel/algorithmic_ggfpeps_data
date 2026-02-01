@@ -124,6 +124,7 @@ def main():
         axes[0, col].tick_params(axis="both")
         axes[1, col].tick_params(axis="both")
 
+    plt.tight_layout(rect=[0, 0, 1, 0.93])
     
     handles, labels = axes[1, 1].get_legend_handles_labels()
     
@@ -136,7 +137,7 @@ def main():
         frameon=False,
     )
     
-    plt.savefig(output_filename, bbox_inches="tight")
+    plt.savefig(output_filename)
     plt.close()
 
 if __name__ == "__main__":
