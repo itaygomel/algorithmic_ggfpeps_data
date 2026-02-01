@@ -100,7 +100,8 @@ def main():
         if match:
             g_value = float(match.group(1))
             c_value = match.group(2)
-            if c_value not in ["c", "T", "F"]: continue
+            if c_value not in ["c", "T", "F"]: 
+                continue
 
             subfolder_path = os.path.join(base_folder, subfolder)
             npz_files = glob.glob(os.path.join(subfolder_path, "*.npz"))
@@ -139,6 +140,7 @@ def main():
     ax.legend(frameon=False) 
     
     output_file = "figures/eom_gf_grad.pdf"
+    plt.tight_layout()
     plt.savefig(output_file)
 
 if __name__ == "__main__":
