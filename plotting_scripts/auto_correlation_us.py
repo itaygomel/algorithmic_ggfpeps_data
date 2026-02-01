@@ -63,6 +63,7 @@ def main():
     plt.ylabel(f"Autocorrelation of {obs_name}")
     plt.xlabel("Step number")
     plt.ylim(bottom=1e-4)
+    plt.xlim(right=50)
     plt.yscale("log")
     
     plt.legend(loc="upper right")
