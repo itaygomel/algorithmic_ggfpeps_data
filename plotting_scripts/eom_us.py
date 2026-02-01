@@ -3,7 +3,6 @@ import glob
 import numpy as np
 import matplotlib.pyplot as plt
 
-# Strict import of your custom formatting
 from plotting_formats.plot_format_2_columns import *
 
 def main():
