@@ -14,7 +14,7 @@ scripts_to_run = [
     "eom_mag_energy_trans_inv",
     "eom_trans_inv_el",
     "eom_us",
-    "grad_eom_gf",
+    "grad_eom_gf", # This script takes much longer to run, comment it out if not needed
 ]
 
 if __name__ == "__main__":
