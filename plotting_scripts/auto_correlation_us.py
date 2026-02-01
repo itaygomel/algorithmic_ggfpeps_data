@@ -6,7 +6,6 @@ import matplotlib.pyplot as plt
 import re
 
 from plotting_formats.plot_format import * 
-
 def main():
     """Autocorrelation of the energy as a function of step
         number for different number of updated links per step."""
@@ -39,7 +38,6 @@ def main():
             
     data_list.sort(key=lambda x: int(x["n"]))
 
-    
     has_data = False
     
     for data in data_list:
@@ -66,8 +64,6 @@ def main():
     plt.yscale("log")
     
     plt.legend(loc="upper right")
-    
-    plt.tight_layout()
     
     plt.savefig(output_pdf, dpi=300, bbox_inches="tight")
     

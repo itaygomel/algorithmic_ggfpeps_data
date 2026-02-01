@@ -84,8 +84,7 @@ def plot_single_observable(data_folder, obs_key, ylabel_text, output_filename):
     axvec[1].set_xscale("log")
     axvec[1].set_xlabel(f"Time [sec]")
 
-    f.tight_layout()
-    plt.savefig(output_filename, dpi=300)
+    plt.savefig(output_filename, dpi=300, bbox_inches="tight")
     plt.close(f)
 
 def main():
