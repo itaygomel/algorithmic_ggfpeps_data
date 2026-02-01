@@ -4,7 +4,7 @@ import sys
 import numpy as np
 import matplotlib.pyplot as plt
 import glob
-import plotting_scripts.utils as utils
+import utils
 from plotting_formats.plot_format import *
 
 
@@ -16,15 +16,12 @@ def process_single_file(filepath):
         return [], []
 
     try:
-        # Load the compressed raw data (No need for pickle/custom classes)
         data = np.load(filepath)
         
-        # Extract arrays
         energy_ts = data["energy_ts"]
         grad_norm_ts = data["grad_norm_ts"]
         
         # Reconstruct the total energy gradient from components
-        # (This matches the logic in the original script)
         el_grad = -2 * float(data["g_el"]) * data["el_grad_ts"]
         mass_grad = float(data["g_mass"]) * data["mass_grad_ts"]
         int_grad = float(data["g_int"]) * data["int_grad_ts"]
@@ -41,7 +38,6 @@ def process_single_file(filepath):
         for layer in range(nlayer):
             for grad_ind in range(nparams):
                 
-                # Slicing the arrays for the specific layer/param
                 current_grad = energy_grad_obsvec[:, layer, grad_ind]
                 current_norm = grad_norm_ts[:, layer, grad_ind]
 
@@ -88,14 +84,13 @@ def get_max_grad_error_from_files(file_list):
 def main():
     """Maximal relative error on the mean among energy
     gradient components for different gauge fixing trees"""
-    base_folder = "data" 
+    base_folder = "data/grad_gf" 
     results = {}
     
     labels = {"c": "Chessboard", "T": "Maximal Tree", "F": "No Gauge Fixing"}
     colors = {"c": "tab:orange", "T": "tab:red", "F": "tab:blue"}
     pattern = r"L_4_g_([0-9.]+)_gf_([A-Za-z0-9]+)"
 
-    print("Analyzing data...")
     if not os.path.exists(base_folder):
         print(f"Error: Data folder '{base_folder}' not found.")
         return
